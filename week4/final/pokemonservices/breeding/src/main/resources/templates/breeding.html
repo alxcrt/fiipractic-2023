@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <title>Pokemon Breeder</title>
+</head>
+
+<style>
+        h1 {
+            text-align: center;
+            font-size: 2rem;
+        }
+        .pokemon-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 10px 0;
+        }
+        .pokemon-name {
+            margin-right: 10px;
+            font-weight: bold;
+        }
+        .pokemon-img {
+            height: 128px;
+            image-rendering: pixelated;
+        }
+
+        .pokemon-img2 {
+            height: 256px;
+            image-rendering: pixelated;
+        }
+
+        #breeder{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #parents{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #heart{
+           height: 100px;
+        }
+
+
+
+    </style>
+
+<body>
+<h1>Pokemon breeder</h1>
+<hr />
+
+<div id="breeder">
+    <div id="parents" >
+        <div class="pokemon-container">
+            <span th:text="${pokemon1.name}" class="pokemon-name"></span>
+            <img th:src="@{'https://img.pokemondb.net/sprites/black-white/anim/normal/' + ${#strings.toLowerCase(pokemon1.name)} + '.gif'}" class="pokemon-img" />
+        </div>
+
+        <!--       <img src="https://image.emojipng.com/873/573873.jpg" id="heart"/>-->
+
+        <div class="pokemon-container">
+            <span th:text="${pokemon2.name}" class="pokemon-name"></span>
+            <img th:src="@{'https://img.pokemondb.net/sprites/black-white/anim/normal/' + ${#strings.toLowerCase(pokemon2.name)} + '.gif'}" class="pokemon-img" />
+        </div>
+    </div>
+    <div class="pokemon-container">
+        <img th:if="${combinationExists}" th:src="@{'https://images.alexonsager.net/pokemon/fused/' + ${pokeId1} + '/' + ${pokeId1} + '.' + ${pokeId2}+ '.png'}" class="pokemon-img1" />
+        <img th:if="${not combinationExists}" src="https://25.media.tumblr.com/tumblr_lvwmhdE0lN1qg0dcvo1_500.gif" class="pokemon-img"/>
+
+    </div>
+</div>
+
+
+
+</body>
+</html>
