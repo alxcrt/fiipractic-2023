@@ -1,0 +1,21 @@
+server:
+  port: 8081
+
+spring:
+  application:
+    name: battle
+  datasource:
+    url: jdbc:postgresql://localhost:5432/postgres
+    username: fiipractic
+    password: fiipractic
+    hikari:
+      connectionTimeout: 20000
+      maximumPoolSize: 5
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQL95Dialect
+        format_sql: true
+    hibernate:
+      ddl-auto: update
+    show-sql: true

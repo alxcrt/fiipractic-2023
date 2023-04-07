@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/html">
+<head>
+    <title>Battle Results</title>
+</head>
+
+<style>
+        h1 {
+            text-align: center;
+            font-size: 2rem;
+        }
+        .pokemon-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 10px 0;
+        }
+        .pokemon-name {
+            margin-right: 10px;
+            font-weight: bold;
+        }
+        .pokemon-img {
+            height: 80px;
+            image-rendering: pixelated;
+        }
+        .team{
+            display:flex;
+        }
+        #battle{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+    </style>
+
+<body>
+<h1>Let the battle begin!</h1>
+<hr />
+
+<div id="battle">
+    <div class="team">
+        <div th:each="pokemon : ${team1}" >
+            <div class="pokemon-container">
+                <span th:text="${pokemon.name}" class="pokemon-name"></span>
+                <img th:src="@{'https://img.pokemondb.net/sprites/black-white/anim/normal/' + ${#strings.toLowerCase(pokemon.name)} + '.gif'}" class="pokemon-img" />
+            </div>
+        </div>
+    </div>
+
+    <div>
+        VS
+    </div>
+
+    <div class="team">
+        <div th:each="pokemon : ${team2}" >
+            <div class="pokemon-container">
+                <span th:text="${pokemon.name}" class="pokemon-name"></span>
+                <img th:src="@{'https://img.pokemondb.net/sprites/black-white/anim/normal/' + ${#strings.toLowerCase(pokemon.name)} + '.gif'}" class="pokemon-img" />
+            </div>
+        </div>
+    </div>
+
+    <div th:text="${result}"></div>
+</div>
+
+
+</body>
+</html>
